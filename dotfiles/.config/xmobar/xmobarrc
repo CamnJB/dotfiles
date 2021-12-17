@@ -1,0 +1,46 @@
+Config { font =         "xft:Milky Han Mono JP Medium:pixelsize=14:antialias=true:hinting=true"
+       , additionalFonts = ["xft:Mononoki Nerd Font:pixelsize=12:antialisas=true:hinting=true",
+                "xft:BAYBAYIN CHOCHIN:pixelsize=16:antialias=true:hinting=true",
+                "xft:Milky Han Mono JP Heavy:pixelsize=14:antialias=true:hinting=true"
+               ]
+      -- , borderColor = "black"
+      -- , border = TopB
+       , bgColor = "#282828"
+       , fgColor = "#ebdbb2"
+      -- , alpha = 255
+       , position = TopSize L 100 24
+      -- , textOffset = -1
+      -- , iconOffset = -1
+       , lowerOnStart = True
+      -- , pickBroadest = False
+       , persistent = True
+       , hideOnStart = False
+       , iconRoot = "."
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [
+     -- CPU Usage   
+        Run Cpu ["-t", "[<fn=1>\xf108</fn> <total>%]", "-L", "3","-H", "70", "--high", "#d79921"] 20,
+     -- CPU Temp 
+        Run MultiCoreTemp ["-t", "[Temp: <avg>C]", "-L", "50", "-H", "85", "--high", "#cc241d", "--", "--mintemp", "20", "--maxtemp", "100"] 50,
+     -- Network Usage
+        Run Network "enp34s0" ["-t", "Net: <fn=1>\xf0d7</fn> <rx>kb <fn=1>\xf0d8</fn> <tx>kb", "-L","0","-H","32", "--normal","green","--high","red"] 10, -- Network Upload and Download  speeds
+     -- Memory Usage    
+        Run Memory ["-t", "[<fn=1>\xf233</fn> <cache>M (<usedratio>%)]"] 10,
+     -- Kernal Check
+        Run Com "uname" ["-s","-r"] "" 36000,
+     -- Date and Time
+            Run Date "[%a %d %b] [%H:%M]" "date" 20,
+     -- Uptime
+        Run Uptime ["-t", "[<days>d <hours>h <minutes>m]"] 30,
+     -- Workspace Viewer
+        Run UnsafeStdinReader
+     ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "<fn=2> sisiw= </fn> | %UnsafeStdinReader%}\
+        \{%cpu% %multicoretemp% %memory% %uptime% %date%"
+       }
+-- Maganda  mgn+d
+-- Sisiw    sisiw=
+
