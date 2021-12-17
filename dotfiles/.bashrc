@@ -13,7 +13,7 @@
   export SDL_IM_MODULE='fcitx'
   export XMODIFIERS='@im=fcitx'
 
-  export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/ve:/root/.local/bin
+  export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/ve
 
   if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   startx
