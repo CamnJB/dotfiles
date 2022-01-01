@@ -5,6 +5,7 @@ import XMonad
 import Data.Monoid
 import System.Exit
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Fullscreen
 import qualified XMonad.StackSet as W
 import qualified Data.Map    as M
 
@@ -256,7 +257,7 @@ myStartupHook = do
 main = do
    xmproc0 <- spawnPipe "xmobar -x 0 /home/cameron/.config/xmobar/xmobarrc"
    xmproc1 <- spawnPipe "xmobar -x 1 /home/cameron/.config/xmobar/xmobarrc"
-   xmonad $ docks def {
+   xmonad $ fullScreen $ docks def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
